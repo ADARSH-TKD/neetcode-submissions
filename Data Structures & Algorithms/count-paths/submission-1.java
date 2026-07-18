@@ -1,0 +1,17 @@
+class Solution {
+    int solve(int m , int n , int dp[][] ){
+
+        if(n == 0||m == 0) return 1;
+        if(dp[m][n] != -1) return dp[m][n];
+        dp[m][n] = solve(m-1, n, dp) + solve(m, n-1, dp);
+        return dp[m][n];
+    }
+    public int uniquePaths(int m, int n) {
+        int dp[][] = new int[m][n];
+        for (int[] row : dp) {
+            Arrays.fill(row, -1);
+        }
+        return solve(m-1 , n-1 , dp);
+        
+    }
+}
